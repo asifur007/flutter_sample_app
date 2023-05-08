@@ -1,7 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'description_page.dart';
-import 'main.dart';
+import 'login_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,6 +14,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Color backgroundColor = Colors.white;
+
+  bool _iconBool = false;
+
+  IconData _iconLight = Icons.wb_sunny;
+  IconData _iconDark = Icons.nights_stay;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,15 +31,15 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             onPressed: () {
               setState(() {
-                if(backgroundColor == Colors.white){
-                  backgroundColor = Colors.red;
-                }
-                else{
+                _iconBool = !_iconBool;
+                if (backgroundColor == Colors.white) {
+                  backgroundColor = Colors.black54;
+                } else {
                   backgroundColor = Colors.white;
                 }
               });
             },
-            icon: const Icon(Icons.color_lens_rounded),
+            icon: Icon(_iconBool ? _iconDark : _iconLight),
           ),
         ],
       ),
